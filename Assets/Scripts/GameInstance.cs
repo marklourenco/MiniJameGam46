@@ -3,41 +3,47 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameInstance : MonoBehaviour
 {
     private static GameInstance instance = null;
     public static GameInstance Instance { get { return instance; } }
 
+    // top left score stuff
     public TMP_Text scoreText = null;
     public TMP_Text finalScoreText = null;
     private int score = 0;
 
-    // For enemy balloons that get infected
+    // list of infected balloons
     public List<GameObject> infectedBalloons = new List<GameObject>();
 
+    // camera and camera movement refs/values
     public Camera mainCamera;
     private float switchCameraTimer = 2.0f;
     private float switchCameraTimerCurrent = 0.0f;
 
+    // game end flag
     public bool gameEnd = false;
 
+    // UI references
     public GameObject gameOverScreen = null;
     public GameObject duringGameUI = null;
 
+    // timer ref
     public GameObject timer = null;
 
-    // List of enemy prefabs to spawn at the start
+    // list of enemies at spawn
     private List<GameObject> enemyPrefabs = new List<GameObject>();
     public GameObject enemyPrefab = null;
-    public int enemyAmount = 40;
+    public int enemyAmount = 0;
 
-    private float explosionRadius = 15.0f;
+    // explosion values
+    private float explosionRadius = 20.0f;
     private List<GameObject> pendingExplosions = new List<GameObject>();
     private float explosionDelayTimer = 0f;
     private bool waitingForExplosion = false;
-
-    public float explosionDelay = 2f; // tweak in inspector
+    public float explosionDelay = 2f;
 
 
     private void Awake()
@@ -52,21 +58,25 @@ public class GameInstance : MonoBehaviour
             instance.Initialize();
         }
     }
-
-    private int currentBalloonIndex = 0;
+    public void Initialize()
+    {
+        // start of game, sets everything up
+        Restart();
+    }
 
     private void Update()
     {
         if (gameEnd && infectedBalloons.Count > 0)
         {
-            // If we're waiting to blow up a cluster
+            // delay for camera movement
             if (waitingForExplosion)
             {
+                // delay count-up
                 explosionDelayTimer += Time.deltaTime;
 
                 if (explosionDelayTimer >= explosionDelay)
                 {
-                    // Delete balloons after delay
+                    // delete balloons after delay
                     foreach (GameObject balloon in pendingExplosions)
                     {
                         if (balloon != null)
@@ -84,12 +94,12 @@ public class GameInstance : MonoBehaviour
             }
             else
             {
-                // Normal cluster explosion pacing
+                // normal cluster explosion pacing
                 switchCameraTimerCurrent += Time.deltaTime;
 
                 if (switchCameraTimerCurrent >= switchCameraTimer)
                 {
-                    Explode(0); // Explode first available cluster
+                    Explode(0); // explode first available cluster
                     switchCameraTimerCurrent = 0f;
                 }
             }
@@ -100,9 +110,12 @@ public class GameInstance : MonoBehaviour
 
             if (switchCameraTimerCurrent >= switchCameraTimer)
             {
+                // switch UI
                 duringGameUI.SetActive(false);
                 gameOverScreen.SetActive(true);
-                finalScoreText.text = "Final Score: " + score.ToString();
+                finalScoreText.text = score.ToString();
+
+                HighscoreManager.SaveHighscore(score);
             }
         }
     }
@@ -114,11 +127,7 @@ public class GameInstance : MonoBehaviour
         
     }
 
-    public void Initialize()
-    {
-        Restart();
-    }
-
+    // keep score of infected balloons and update UI and adds to list
     public void EnemyInfected(GameObject other)
     {
         score++;
@@ -127,6 +136,7 @@ public class GameInstance : MonoBehaviour
         infectedBalloons.Add(other);
     }
 
+    // explosion logic
     public void Explode(int i)
     {
         if (i < 0 || i >= infectedBalloons.Count) return;
@@ -134,15 +144,15 @@ public class GameInstance : MonoBehaviour
         GameObject centerBalloon = infectedBalloons[i];
         Vector3 explosionCenter = centerBalloon.transform.position;
 
-        // Move camera right away
+        // move camera right away
         mainCamera.GetComponent<PlayerCamera>().player = null;
         mainCamera.transform.position = new Vector3(explosionCenter.x, explosionCenter.y, mainCamera.transform.position.z);
 
-        // Start delay
+        // start delay
         waitingForExplosion = true;
         explosionDelayTimer = 0f;
 
-        // Collect balloons within radius
+        // collect balloons within radius
         pendingExplosions.Clear();
         foreach (GameObject balloon in infectedBalloons)
         {
@@ -155,7 +165,7 @@ public class GameInstance : MonoBehaviour
         }
     }
 
-
+    // new game, resets values
     public void Restart()
     {
         foreach (GameObject prefab in enemyPrefabs)
@@ -173,11 +183,11 @@ public class GameInstance : MonoBehaviour
         gameEnd = false;
         duringGameUI.SetActive(true);
         gameOverScreen.SetActive(false);
-        currentBalloonIndex = 0;
         switchCameraTimerCurrent = 0.0f;
         mainCamera.GetComponent<PlayerCamera>().Restart();
     }
 
+    // start of game creates enemies
     public void SpawnEnemies()
     {
         for (int i = 0; i < enemyAmount; i++)
@@ -185,5 +195,10 @@ public class GameInstance : MonoBehaviour
             GameObject enemyToSpawn = Instantiate(enemyPrefab, new Vector3(Random.Range(-40f, 40f), Random.Range(-40f, 40f), 0), Quaternion.identity);
             enemyPrefabs.Add(enemyToSpawn);
         }
+    }
+
+    public void MainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
     }
 }

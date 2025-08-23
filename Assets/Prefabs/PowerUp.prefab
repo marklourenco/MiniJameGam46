@@ -111,9 +111,9 @@ MonoBehaviour:
   duration: 5
   timeStopPowerUpSprite: {fileID: 0}
   shootPrefab: {fileID: 9047221625897781997, guid: 5564da5c394d78d4d85dd91c1b39ac5b, type: 3}
-  infectionShootPowerUpSprite: {fileID: 0}
+  infectionShootPowerUpSprite: {fileID: -8871067411112730452, guid: 9f93476c3ce803f408806aaca24bdcf0, type: 3}
   explosionPrefab: {fileID: 3478115160893733216, guid: 40efe5eeab8b72f4385339b9845db18e, type: 3}
-  explosionPowerUpSprite: {fileID: 0}
+  explosionPowerUpSprite: {fileID: -1257933056886073806, guid: 5f42e4ecee2ce5d45bea988c8d0d50f8, type: 3}
 --- !u!58 &5245416534305089002
 CircleCollider2D:
   m_ObjectHideFlags: 0

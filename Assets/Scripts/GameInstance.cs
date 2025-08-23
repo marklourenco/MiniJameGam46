@@ -120,13 +120,6 @@ public class GameInstance : MonoBehaviour
         }
     }
 
-
-
-    private void OnDestroy()
-    {
-        
-    }
-
     // keep score of infected balloons and update UI and adds to list
     public void EnemyInfected(GameObject other)
     {

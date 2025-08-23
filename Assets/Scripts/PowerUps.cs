@@ -12,17 +12,21 @@ public class PowerUps : MonoBehaviour
 
     [Header("Speed")]
     public float speedIncrease = 0.5f;
+    public Sprite speedPowerUpSprite = null;
 
     [Header("Time Stop")]
     public float duration = 5.0f;
     private float timer = 0f;
     private bool timerStopActive = false;
+    public Sprite timeStopPowerUpSprite = null;
 
     [Header("Infection Shoot")]
     public GameObject shootPrefab;
+    public Sprite infectionShootPowerUpSprite = null;
 
     [Header("Explosion")]
     public GameObject explosionPrefab = null;
+    public Sprite explosionPowerUpSprite = null;
 
     private void Start()
     {
@@ -32,6 +36,9 @@ public class PowerUps : MonoBehaviour
         if (randomPowerUp == 0)
         {
             speedPowerUp = true;
+            // Set the sprite for the speed power-up
+            if (speedPowerUpSprite != null)
+            gameObject.GetComponent<SpriteRenderer>().sprite = speedPowerUpSprite;
         }
         else if (randomPowerUp == 1)
         {

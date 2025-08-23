@@ -10,8 +10,8 @@ public class PlayerInfect : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
-            // Change Tag
-            other.GetComponent<SpriteRenderer>().sprite = enemyInfected;
+            // Change Animator boolean to infected
+            other.GetComponent<Animator>().SetBool("Infected", true);
             other.tag = "Infected";
             Debug.Log("Balloon has been infected!");
             // Up score

@@ -29,8 +29,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 7.33, y: 0.91, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -79,7 +79,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
-  m_Color: {r: 0.9054837, g: 0, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -106,10 +106,14 @@ MonoBehaviour:
   timeStopPowerUp: 0
   infectionShootPowerUp: 0
   explosionPowerUp: 0
-  speedIncrease: 0.5
+  speedIncrease: 1.5
+  speedPowerUpSprite: {fileID: 8193189232997779619, guid: 2899aa2768aaab14498ea79e566b2e30, type: 3}
   duration: 5
+  timeStopPowerUpSprite: {fileID: 0}
   shootPrefab: {fileID: 9047221625897781997, guid: 5564da5c394d78d4d85dd91c1b39ac5b, type: 3}
+  infectionShootPowerUpSprite: {fileID: 0}
   explosionPrefab: {fileID: 3478115160893733216, guid: 40efe5eeab8b72f4385339b9845db18e, type: 3}
+  explosionPowerUpSprite: {fileID: 0}
 --- !u!58 &5245416534305089002
 CircleCollider2D:
   m_ObjectHideFlags: 0

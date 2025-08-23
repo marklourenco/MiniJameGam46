@@ -39,7 +39,7 @@ public class GameInstance : MonoBehaviour
     public int enemyAmount = 0;
 
     // explosion values
-    private float explosionRadius = 20.0f;
+    private float explosionRadius = 40.0f;
     private List<GameObject> pendingExplosions = new List<GameObject>();
     private float explosionDelayTimer = 0f;
     private bool waitingForExplosion = false;

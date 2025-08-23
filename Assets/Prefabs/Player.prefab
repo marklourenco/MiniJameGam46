@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3139489689208021336}
   - component: {fileID: 208491425498753559}
   - component: {fileID: 2308511460780059121}
+  - component: {fileID: 2787145922049635706}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -183,3 +184,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyInfected: {fileID: 6581564944771812290, guid: 5020ecd48b00c114f8b90e10e5655316, type: 3}
+--- !u!95 &2787145922049635706
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2549360813002164149}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fe1bc315c85df014c9e3348d1f094b9f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

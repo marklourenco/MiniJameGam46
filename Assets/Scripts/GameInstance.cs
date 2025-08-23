@@ -45,6 +45,11 @@ public class GameInstance : MonoBehaviour
     private bool waitingForExplosion = false;
     public float explosionDelay = 2f;
 
+    // power up refs
+    private List<GameObject> powerUpPrefabs = new List<GameObject>();
+    public GameObject powerUpPrefab = null;
+    public int powerUpAmount = 0;
+
 
     private void Awake()
     {
@@ -166,9 +171,15 @@ public class GameInstance : MonoBehaviour
             Destroy(prefab);
         }
         enemyPrefabs.Clear();
+        foreach (GameObject prefab in powerUpPrefabs)
+        {
+            Destroy(prefab);
+        }
+        powerUpPrefabs.Clear();
 
         SpawnEnemies();
-        GetComponent<Timer>().SetCurrentTimer(15);
+        SpawnPowerUps();
+        GetComponent<Timer>().SetCurrentTimer(60);
         GetComponent<Timer>().ResumeTimer();
         score = 0;
         scoreText.text = "-    " + score.ToString();
@@ -185,8 +196,17 @@ public class GameInstance : MonoBehaviour
     {
         for (int i = 0; i < enemyAmount; i++)
         {
-            GameObject enemyToSpawn = Instantiate(enemyPrefab, new Vector3(Random.Range(-40f, 40f), Random.Range(-40f, 40f), 0), Quaternion.identity);
+            GameObject enemyToSpawn = Instantiate(enemyPrefab, new Vector3(Random.Range(-100f, 100f), Random.Range(-100f, 100f), 0), Quaternion.identity);
             enemyPrefabs.Add(enemyToSpawn);
+        }
+    }
+
+    public void SpawnPowerUps()
+    {
+        for (int i = 0; i < powerUpAmount; i++)
+        {
+            GameObject powerUpToSpawn = Instantiate(powerUpPrefab, new Vector3(Random.Range(-100f, 100f), Random.Range(-100f, 100f), 0), Quaternion.identity);
+            powerUpPrefabs.Add(powerUpToSpawn);
         }
     }
 

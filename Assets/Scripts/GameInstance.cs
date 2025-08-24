@@ -68,12 +68,15 @@ public class GameInstance : MonoBehaviour
     {
         // start of game, sets everything up
         Restart();
+        AudioManager.Instance.SetMusicVolume(1f);
+        AudioManager.Instance.SetSFXVolume(0.5f);
     }
 
     private void Update()
     {
         if (gameEnd && infectedBalloons.Count > 0)
         {
+            AudioManager.Instance.StopMusic();
             // delay for camera movement
             if (waitingForExplosion)
             {
@@ -92,6 +95,7 @@ public class GameInstance : MonoBehaviour
                             infectedBalloons.Remove(balloon);
                         }
                     }
+                    AudioManager.Instance.PlaySFX("balloon pop");
 
                     pendingExplosions.Clear();
                     waitingForExplosion = false;
@@ -216,5 +220,10 @@ public class GameInstance : MonoBehaviour
     public void MainMenu()
     {
         SceneManager.LoadScene("MainMenu");
+    }
+
+    public void PlayLoopMusic()
+    {
+        AudioManager.Instance.PlayMusic("loop music", true);
     }
 }

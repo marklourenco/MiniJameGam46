@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 7421774253539047591}
   - component: {fileID: 7657871805526376726}
   - component: {fileID: -8548791944760078996}
-  - component: {fileID: 8092954279920151448}
   m_Layer: 0
   m_Name: ShootPowerBalloon
   m_TagString: Infected
@@ -81,7 +80,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -7893811080159322527, guid: dae135c7c006ac24986ade51b94916da, type: 3}
+  m_Sprite: {fileID: -8871067411112730452, guid: 9f93476c3ce803f408806aaca24bdcf0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -185,25 +184,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyInfected: {fileID: 6581564944771812290, guid: 5020ecd48b00c114f8b90e10e5655316, type: 3}
---- !u!95 &8092954279920151448
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9047221625897781997}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: fe1bc315c85df014c9e3348d1f094b9f, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0

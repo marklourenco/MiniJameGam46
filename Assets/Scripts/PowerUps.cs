@@ -70,11 +70,13 @@ public class PowerUps : MonoBehaviour
         if (other.gameObject != player) return;
         else if (speedPowerUp)
         {
+            AudioManager.Instance.PlaySFX("speed");
             other.GetComponent<Movement>().speed += speedIncrease;
             Destroy(gameObject);
         }
         else if (timeStopPowerUp)
         {
+            AudioManager.Instance.PlaySFX("clock");
             Timer.Instance.StopTimer();
             timer = 0.0f;
             timerStopActive = true;
@@ -86,6 +88,7 @@ public class PowerUps : MonoBehaviour
         {
             for (int i = 0; i < 4; i++)
             {
+                AudioManager.Instance.PlaySFX("shoot");
                 // instantiate a prefab
                 GameObject enemyToSpawn = Instantiate(shootPrefab, new Vector3(player.transform.position.x, player.transform.position.y, 0), Quaternion.identity);
                 // give it a new speed direction
@@ -111,6 +114,7 @@ public class PowerUps : MonoBehaviour
         }
         else if (explosionPowerUp)
         {
+            AudioManager.Instance.PlaySFX("explosion");
             GameObject explosion = Instantiate(explosionPrefab, player.transform.position, Quaternion.identity);
             Destroy(gameObject);
         }

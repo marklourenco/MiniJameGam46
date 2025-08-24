@@ -44,7 +44,8 @@ Download the build from the [Releases](./releases) section and run the executabl
 
 ## 🎨 Credits
 
-Balloon sprites and environment art powered by the awesome free asset pack from:  
+Balloon and powerup sprites done by Morgan Tang.
+Environment art powered by the awesome free asset pack from:  
 **[Zombie Apocalypse Asset Pack by PixelRogueKnight](https://pixelrogueknight.itch.io/zombie-apocalypse-assetpack)**
 
 ---

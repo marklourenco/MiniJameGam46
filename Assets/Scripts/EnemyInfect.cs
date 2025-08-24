@@ -5,16 +5,15 @@ public class EnemyInfect : MonoBehaviour
 {
     public Sprite enemyInfected;
 
-    // When the object collides with an object tagged as "Enemy", they become infected.
     private void OnTriggerStay2D(Collider2D other)
     {
         if (other.CompareTag("Enemy") && this.gameObject.CompareTag("Infected"))
         {
-            // Change Tag
+            // change Tag
             other.GetComponent<Animator>().SetBool("Infected", true);
             other.tag = "Infected";
             Debug.Log("Balloon has been infected!");
-            // Up score
+            // score
             GameInstance.Instance.EnemyInfected(other.gameObject);
         }
     }

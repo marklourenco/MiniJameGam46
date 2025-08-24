@@ -36,7 +36,7 @@ public class PowerUps : MonoBehaviour
         if (randomPowerUp == 0)
         {
             speedPowerUp = true;
-            // Set the sprite for the speed power-up
+            // sprite for the speed power-up
             if (speedPowerUpSprite != null)
             gameObject.GetComponent<SpriteRenderer>().sprite = speedPowerUpSprite;
         }
@@ -47,14 +47,14 @@ public class PowerUps : MonoBehaviour
         else if (randomPowerUp == 2)
         {
             infectionShootPowerUp = true;
-            // Set the sprite for the infection shoot power-up
+            // sprite for the infection shoot power-up
             if (infectionShootPowerUpSprite != null)
             gameObject.GetComponent<SpriteRenderer>().sprite = infectionShootPowerUpSprite;
         }
         else if (randomPowerUp == 3)
         {
             explosionPowerUp = true;
-            // Set the sprite for the explosion power-up
+            // sprite for the explosion power-up
             if (explosionPowerUpSprite != null)
             gameObject.GetComponent<SpriteRenderer>().sprite = explosionPowerUpSprite;
         }

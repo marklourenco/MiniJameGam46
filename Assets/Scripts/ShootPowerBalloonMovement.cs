@@ -39,7 +39,7 @@ public class ShootPowerBalloonMovement : MonoBehaviour
         }
         else
         {
-            // Stop movement when the game ends
+            // stop movement when the game ends
             rb.linearVelocity = Vector2.zero;
         }
     }

@@ -139,7 +139,7 @@ public class GameInstance : MonoBehaviour
         infectedBalloons.Add(other);
     }
 
-    // explosion logic
+    // explosion
     public void Explode(int i)
     {
         if (i < 0 || i >= infectedBalloons.Count) return;

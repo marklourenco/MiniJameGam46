@@ -26,7 +26,6 @@ public class AudioManager : MonoBehaviour
             if (musicSource != null) musicSource.spatialBlend = 0f;
             if (sfxSource != null) sfxSource.spatialBlend = 0f;
 
-            // Fill dictionaries for quick access
             foreach (var clip in musicClips)
                 if (clip != null && !musicDict.ContainsKey(clip.name))
                     musicDict.Add(clip.name, clip);

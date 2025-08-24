@@ -50,6 +50,7 @@ public class GameInstance : MonoBehaviour
     public GameObject powerUpPrefab = null;
     public int powerUpAmount = 0;
 
+    public GameObject player = null;
 
     private void Awake()
     {
@@ -179,7 +180,7 @@ public class GameInstance : MonoBehaviour
 
         SpawnEnemies();
         SpawnPowerUps();
-        GetComponent<Timer>().SetCurrentTimer(60);
+        GetComponent<Timer>().SetCurrentTimer(30);
         GetComponent<Timer>().ResumeTimer();
         score = 0;
         scoreText.text = "-    " + score.ToString();
@@ -188,7 +189,9 @@ public class GameInstance : MonoBehaviour
         duringGameUI.SetActive(true);
         gameOverScreen.SetActive(false);
         switchCameraTimerCurrent = 0.0f;
+        player.transform.position = new Vector3(0, 0, 0);
         mainCamera.GetComponent<PlayerCamera>().Restart();
+        player.GetComponent<Movement>().speed = 5.0f;
     }
 
     // start of game creates enemies
@@ -196,7 +199,7 @@ public class GameInstance : MonoBehaviour
     {
         for (int i = 0; i < enemyAmount; i++)
         {
-            GameObject enemyToSpawn = Instantiate(enemyPrefab, new Vector3(Random.Range(-100f, 100f), Random.Range(-100f, 100f), 0), Quaternion.identity);
+            GameObject enemyToSpawn = Instantiate(enemyPrefab, new Vector3(Random.Range(-70f, 70f), Random.Range(-70f, 45f), 0), Quaternion.identity);
             enemyPrefabs.Add(enemyToSpawn);
         }
     }
@@ -205,7 +208,7 @@ public class GameInstance : MonoBehaviour
     {
         for (int i = 0; i < powerUpAmount; i++)
         {
-            GameObject powerUpToSpawn = Instantiate(powerUpPrefab, new Vector3(Random.Range(-100f, 100f), Random.Range(-100f, 100f), 0), Quaternion.identity);
+            GameObject powerUpToSpawn = Instantiate(powerUpPrefab, new Vector3(Random.Range(-70f, 70f), Random.Range(-70f, 45f), 0), Quaternion.identity);
             powerUpPrefabs.Add(powerUpToSpawn);
         }
     }
